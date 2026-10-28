@@ -1,0 +1,13 @@
+.LoadingScreen {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+}
+
+.LoadingScreenText {
+  margin: 0;
+  color: #5C6778;
+  line-height: 1.5;
+}

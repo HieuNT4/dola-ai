@@ -1,0 +1,72 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(userId) {
+      return request.auth != null
+        && request.auth.uid == userId
+        && request.auth.token.email == "nguyenhieuutck57@gmail.com";
+    }
+
+    function validProject() {
+      return request.resource.data.keys().hasAll(["name", "description", "createdAt"])
+        && request.resource.data.keys().size() == 3
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 400
+        && request.resource.data.createdAt is int;
+    }
+
+    function validEntry() {
+      return request.resource.data.keys().hasAll([
+          "kind",
+          "category",
+          "platform",
+          "amount",
+          "occurredOn",
+          "note",
+          "invoiceCode",
+          "vendor",
+          "createdAt"
+        ])
+        && request.resource.data.keys().size() == 9
+        && request.resource.data.kind in ["expense", "revenue"]
+        && (
+          (request.resource.data.kind == "expense"
+            && request.resource.data.category in ["ads", "server", "resources", "other"])
+          || (request.resource.data.kind == "revenue"
+            && request.resource.data.category in ["sales", "subscription", "other"])
+        )
+        && (
+          (request.resource.data.category == "ads"
+            && request.resource.data.platform in ["facebook", "google", "tiktok", "other"])
+          || (request.resource.data.category != "ads"
+            && request.resource.data.platform == null)
+        )
+        && request.resource.data.amount is int
+        && request.resource.data.amount > 0
+        && request.resource.data.amount <= 1000000000000
+        && request.resource.data.occurredOn is string
+        && request.resource.data.occurredOn.matches("^\\d{4}-\\d{2}-\\d{2}$")
+        && request.resource.data.note is string
+        && request.resource.data.note.size() <= 400
+        && request.resource.data.invoiceCode is string
+        && request.resource.data.invoiceCode.size() <= 80
+        && request.resource.data.vendor is string
+        && request.resource.data.vendor.size() <= 120
+        && request.resource.data.createdAt is int;
+    }
+
+    match /users/{userId}/projects/{projectId} {
+      allow read, delete: if isOwner(userId);
+      allow create, update: if isOwner(userId) && validProject();
+
+      match /entries/{entryId} {
+        allow read, delete: if isOwner(userId);
+        allow create, update: if isOwner(userId) && validEntry();
+      }
+    }
+  }
+}

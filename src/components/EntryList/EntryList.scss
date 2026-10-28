@@ -1,0 +1,80 @@
+.EntryList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.EntryListEmpty {
+  margin: 0;
+  color: #5C6778;
+  line-height: 1.5;
+}
+
+.EntryListRow {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid #E6EAF2;
+  border-radius: 20px;
+  background: #FFFFFF;
+}
+
+.EntryListDate,
+.EntryListTitle,
+.EntryListMeta,
+.EntryListAmount {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.EntryListDate {
+  color: #5C6778;
+  font-size: 0.85rem;
+}
+
+.EntryListCopy {
+  min-width: 0;
+}
+
+.EntryListTitle {
+  font-weight: 600;
+}
+
+.EntryListMeta {
+  overflow: hidden;
+  color: #5C6778;
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.EntryListEnd {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.EntryListAmount {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.EntryListIncome {
+  color: #047857;
+}
+
+.EntryListExpense {
+  color: #BE123C;
+}
+
+@media (max-width: 640px) {
+  .EntryListRow {
+    grid-template-columns: 1fr;
+  }
+
+  .EntryListEnd {
+    justify-content: space-between;
+  }
+}

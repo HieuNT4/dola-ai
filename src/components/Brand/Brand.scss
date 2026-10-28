@@ -1,0 +1,26 @@
+.Brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.BrandMark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 12px;
+  background: #1D4ED8;
+  color: #FFFFFF;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.BrandName {
+  font-family: var(--font-display), serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1;
+}

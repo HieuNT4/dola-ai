@@ -1,0 +1,84 @@
+.ProjectBoard {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ProjectBoardMissing {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.ProjectBoardBack {
+  align-self: flex-start;
+}
+
+.ProjectBoardHead,
+.ProjectBoardActions,
+.ProjectBoardListHead,
+.ProjectBoardPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ProjectBoardIntro {
+  min-width: 0;
+}
+
+.ProjectBoardKicker,
+.ProjectBoardNote,
+.ProjectBoardLabel {
+  margin: 0;
+  color: #5C6778;
+  line-height: 1.5;
+}
+
+.ProjectBoardHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 28px;
+  background: #FFFFFF;
+  box-shadow: 0 18px 50px #11182714;
+}
+
+.ProjectBoardProfit {
+  margin: 6px 0 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: #047857;
+}
+
+.ProjectBoardLoss {
+  color: #BE123C;
+}
+
+.ProjectBoardColumns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.ProjectBoardList {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 960px) {
+  .ProjectBoardHero,
+  .ProjectBoardColumns {
+    grid-template-columns: 1fr;
+  }
+}

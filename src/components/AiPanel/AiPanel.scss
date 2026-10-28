@@ -1,0 +1,56 @@
+.AiPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: 22px;
+  border-radius: 28px;
+  background: #FFFFFF;
+  box-shadow: 0 14px 40px #11182710;
+}
+
+.AiPanelLead,
+.AiPanelMessage,
+.AiPanelDraftMeta,
+.AiPanelPoint {
+  margin: 0;
+  color: #5C6778;
+  line-height: 1.5;
+}
+
+.AiPanelForm,
+.AiPanelDrafts,
+.AiPanelDraft {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.AiPanelChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.AiPanelDraft {
+  padding: 12px;
+  border-radius: 16px;
+  background: #F4F7FB;
+}
+
+.AiPanelDraftTitle,
+.AiPanelDraftAmount,
+.AiPanelHeadline {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.AiPanelResult {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #E7EEFF;
+}
